@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Taha — Automation Work</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --card2: #1c2128;
+            --accent: #2f81f7;
+            --green: #3fb950;
+            --amber: #d29922;
+            --dim: #7d8590;
+            --border: #30363d;
+            --txt: #e6edf3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.65
+        }
+
+        /* NAV */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 17, 23, .96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            max-width: 900px;
+            margin: 0 auto
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--txt);
+            padding: 10px 16px 10px 0;
+            border-right: 1px solid var(--border);
+            margin-right: 8px;
+            flex-shrink: 0
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 12px;
+            color: var(--dim);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: .15s;
+            flex-shrink: 0
+        }
+
+        .nav a:hover {
+            color: var(--txt);
+            border-bottom-color: var(--accent)
+        }
+
+        .nav-switch {
+            margin-left: auto;
+            flex-shrink: 0;
+            padding: 10px 0
+        }
+
+        .nav-switch a {
+            font-size: 12px;
+            color: var(--dim);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            transition: .15s
+        }
+
+        .nav-switch a:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        /* HERO */
+        .hero {
+            padding: 36px 20px 28px;
+            text-align: center;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .hero h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--txt)
+        }
+
+        .hero p {
+            color: var(--dim);
+            margin-top: 6px;
+            font-size: 14px
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            justify-content: center;
+            margin-top: 14px
+        }
+
+        .chip {
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid
+        }
+
+        .chip-blue {
+            background: #0c2d6b;
+            color: #79c0ff;
+            border-color: #1f6feb
+        }
+
+        .chip-green {
+            background: #0a2d1a;
+            color: #56d364;
+            border-color: #238636
+        }
+
+        .chip-amber {
+            background: #2e1b00;
+            color: #e3b341;
+            border-color: #9e6a03
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px
+        }
+
+        /* SECTION HEADER */
+        .sec-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--txt);
+            margin: 28px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            scroll-margin-top: 48px
+        }
+
+        .sec-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border)
+        }
+
+        .sec-num {
+            font-size: 11px;
+            background: var(--accent);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700
+        }
+
+        .sec-sub {
+            font-size: 12px;
+            color: var(--dim);
+            font-weight: 400
+        }
+
+        /* CONTEXT NOTE */
+        .context-note {
+            background: var(--card2);
+            border-left: 3px solid var(--dim);
+            border-radius: 0 6px 6px 0;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: var(--dim)
+        }
+
+        .context-note strong {
+            color: var(--txt)
+        }
+
+        /* TABLES */
+        .table-wrap {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px
+        }
+
+        th {
+            background: var(--card2);
+            color: var(--dim);
+            padding: 7px 14px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            border-bottom: 2px solid var(--border)
+        }
+
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top
+        }
+
+        tr:last-child td {
+            border-bottom: none
+        }
+
+        td:first-child {
+            font-weight: 600;
+            color: var(--txt);
+            width: 210px;
+            white-space: nowrap
+        }
+
+        /* REVIT */
+        .revit-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px
+        }
+
+        .revit-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px
+        }
+
+        .revit-item:last-child {
+            border-bottom: none
+        }
+
+        .revit-icon {
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .revit-name {
+            font-weight: 600;
+            color: var(--txt);
+            min-width: 155px
+        }
+
+        .revit-desc {
+            color: var(--dim)
+        }
+
+        .revit-badge {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            flex-shrink: 0
+        }
+
+        .badge-done {
+            background: #0a2d1a;
+            color: #56d364;
+            border: 1px solid #238636
+        }
+
+        .badge-wip {
+            background: #2e1b00;
+            color: #e3b341;
+            border: 1px solid #9e6a03
+        }
+
+        /* TECH STACK */
+        .tech-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px
+        }
+
+        .tech-row {
+            margin-bottom: 10px
+        }
+
+        .tech-row:last-child {
+            margin-bottom: 0
+        }
+
+        .tech-label {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 6px
+        }
+
+        .tech-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px
+        }
+
+        .tech {
+            background: var(--card2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 12px;
+            color: var(--dim);
+            font-family: 'Courier New', monospace
+        }
+
+        @media(max-width:640px) {
+            td:first-child {
+                width: auto;
+                white-space: normal
+            }
+
+            .revit-item {
+                flex-wrap: wrap
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #111
+            }
+
+            .nav {
+                display: none
+            }
+
+            .hero {
+                background: #fff;
+                padding: 16px 0;
+                border-bottom: 2px solid #ddd
+            }
+
+            .hero h1 {
+                color: #111;
+                font-size: 18pt
+            }
+
+            .hero p {
+                color: #555
+            }
+
+            .chip {
+                background: #f0f0f0;
+                color: #333;
+                border-color: #999
+            }
+
+            .sec-title {
+                color: #111
+            }
+
+            .sec-title::after {
+                background: #ddd
+            }
+
+            .sec-num {
+                background: #1a56db
+            }
+
+            .sec-sub {
+                color: #555
+            }
+
+            .context-note {
+                background: #f5f5f5;
+                border-left-color: #aaa;
+                color: #555
+            }
+
+            .context-note strong {
+                color: #111
+            }
+
+            .table-wrap {
+                background: #f8f8f8;
+                border-color: #ddd
+            }
+
+            th {
+                background: #e8e8e8;
+                color: #555;
+                border-bottom-color: #ccc
+            }
+
+            td {
+                border-bottom-color: #e0e0e0;
+                color: #444
+            }
+
+            td:first-child {
+                color: #111
+            }
+
+            .revit-list {
+                background: #f8f8f8;
+                border-color: #ddd
+            }
+
+            .revit-item {
+                border-bottom-color: #e0e0e0
+            }
+
+            .revit-name {
+                color: #111
+            }
+
+            .revit-desc {
+                color: #444
+            }
+
+            .badge-done {
+                background: #e8f5e9;
+                color: #2e7d32;
+                border-color: #a5d6a7
+            }
+
+            .badge-wip {
+                background: #fff8e1;
+                color: #f57f17;
+                border-color: #ffe082
+            }
+
+            .tech-section {
+                background: #f8f8f8;
+                border-color: #ddd
+            }
+
+            .tech {
+                background: #f0f0f0;
+                border-color: #ddd;
+                color: #444
+            }
+
+            .tech-label {
+                color: #1a56db
+            }
+
+            .nav-switch {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <span class="nav-title">Omar Taha</span>
+            <a href="#data">Data Automation</a>
+            <a href="#workflow">Workflow Automation</a>
+            <a href="#construct">CONSTRUCT-X</a>
+            <a href="#revit">Revit Tools</a>
+            <div class="nav-switch"><a href="index.html">↗ Full Portfolio</a></div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Automation Work</h1>
+        <p>Omar Taha · Automation Engineer · AIDIGITS</p>
+        <div class="chips">
+            <span class="chip chip-green">Data Pipelines</span>
+            <span class="chip chip-blue">REST API Integration</span>
+            <span class="chip chip-amber">Workflow Automation</span>
+            <span class="chip chip-green">Node.js · Python</span>
+            <span class="chip chip-blue">BIM Data Processing</span>
+            <span class="chip chip-amber">IoT Integration</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ========= 01 DATA AUTOMATION ========= -->
+        <div class="sec-title" id="data">
+            <span class="sec-num">01</span>Data Automation & Pipelines
+        </div>
+
+        <div class="context-note">
+            Built as part of Digital Twin platforms (Bentley iTwin, Autodesk Forge) — automated data workflows that kept
+            systems in sync without manual intervention.
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th colspan="2">Pipelines & Data Automation</th>
+                </tr>
+                <tr>
+                    <td>IoT Data Simulation</td>
+                    <td>Automated pipeline that generates realistic sensor data (temperature, pressure, alarms), pushes
+                        it to the database, and updates live dashboards in real time — supports single-run and
+                        continuous modes.</td>
+                </tr>
+                <tr>
+                    <td>Room Data Extraction</td>
+                    <td>Automated process that reads room coordinates from a 3D model and maps them to the database —
+                        enabling accurate IoT device positioning and spatial data linkage without manual input.</td>
+                </tr>
+                <tr>
+                    <td>Database Provisioning</td>
+                    <td>Setup pipelines that auto-provision the full database schema, roles, and configurations from
+                        scratch — with version migration support for schema updates.</td>
+                </tr>
+                <tr>
+                    <td>Data Seeding</td>
+                    <td>Pipelines that populate realistic test data for asset performance, maintenance history, and
+                        operations — enabling rapid demo and development environment setup.</td>
+                </tr>
+                <tr>
+                    <td>Health Monitoring</td>
+                    <td>Backend tooling for database health checks, schema auditing, multi-tenant validation, and data
+                        integrity analysis.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 02 WORKFLOW AUTOMATION ========= -->
+        <div class="sec-title" id="workflow">
+            <span class="sec-num">02</span>Workflow & Process Automation
+        </div>
+
+        <div class="context-note">
+            Automations that replaced manual handoffs between people and systems — notifications, status transitions,
+            and cross-module data flows.
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th colspan="2">Automated Workflows</th>
+                </tr>
+                <tr>
+                    <td>Progress → QC Handoff</td>
+                    <td>When a work package is marked complete, it is automatically forwarded to the QC & Certification
+                        system for review — no manual handoff, no missed packages.</td>
+                </tr>
+                <tr>
+                    <td>Email Notification Service</td>
+                    <td>Event-driven email service that triggers on workflow state changes: request creation,
+                        assignment, and completion — keeping all stakeholders automatically informed.</td>
+                </tr>
+                <tr>
+                    <td>Model Processing Pipeline</td>
+                    <td>Uploading a model file triggers automatic cloud translation via the Autodesk APS API — making
+                        the 3D model viewable in the browser with no manual conversion steps.</td>
+                </tr>
+                <tr>
+                    <td>Document Generation</td>
+                    <td>Form submissions automatically generate formatted PDF documents — removing manual document
+                        creation from the workflow entirely.</td>
+                </tr>
+                <tr>
+                    <td>PowerBI Data Integration</td>
+                    <td>Automated script that populates simulated IoT data, pushes it to the database, and automatically
+                        updates live PowerBI dashboards embedded in the application — supports both static and live
+                        database connections.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 03 CONSTRUCT-X ========= -->
+        <div class="sec-title" id="construct">
+            <span class="sec-num">03</span>BIM Microservices — CONSTRUCT-X (USA)
+            <span class="sec-sub">Node.js · Python · REST APIs</span>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th colspan="2">Microservices Delivered</th>
+                </tr>
+                <tr>
+                    <td>Excel / CSV Parsing</td>
+                    <td>Automated ingestion of structured data files — extracting, transforming, and routing data
+                        between systems without manual handling.</td>
+                </tr>
+                <tr>
+                    <td>Data Validation</td>
+                    <td>Rule-based validation services that check incoming data against defined schemas. Non-compliant
+                        records are rejected with specific error feedback before entering the system.</td>
+                </tr>
+                <tr>
+                    <td>Database API Integration</td>
+                    <td>CRUD operations and data synchronization between multiple external sources and cloud databases
+                        via REST APIs.</td>
+                </tr>
+                <tr>
+                    <td>Automated Notifications</td>
+                    <td>Event-driven email service triggered by workflow state changes.</td>
+                </tr>
+                <tr>
+                    <td>File & Folder Automation</td>
+                    <td>Automated file organization, batch renaming, and folder structure management to enforce
+                        standards.</td>
+                </tr>
+                <tr>
+                    <td>Automated Testing</td>
+                    <td>Unit and integration tests written for all deployed services — validating correctness, data
+                        integrity, and API behavior.</td>
+                </tr>
+                <tr>
+                    <td>Flow-Based Integration</td>
+                    <td>Microservice orchestration using flow-based programming — linking services into automated
+                        pipelines for end-to-end data processing workflows.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 04 REVIT TOOLS ========= -->
+        <div class="sec-title" id="revit">
+            <span class="sec-num">04</span>Revit Automation Tools
+            <span class="sec-sub">Python · Revit API · pyRevit</span>
+        </div>
+
+        <div class="revit-list">
+            <div class="revit-item">
+                <span class="revit-icon">📊</span>
+                <span class="revit-name">Sheet Data Export</span>
+                <span class="revit-desc">Reads all sheets and exports them to CSV — Sheet Number, Name, Author, Checker,
+                    Revision.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🏠</span>
+                <span class="revit-name">Room Validation Report</span>
+                <span class="revit-desc">Reports rooms and areas, flags any room with a missing name or number.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🧱</span>
+                <span class="revit-name">Wall Quantity Takeoff</span>
+                <span class="revit-desc">Groups walls by type, sums total area, and exports to CSV.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">✅</span>
+                <span class="revit-name">Model Health Check</span>
+                <span class="revit-desc">Runs 4 automated checks: empty sheets, unplaced rooms, missing names/numbers,
+                    views not on sheets.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🏷️</span>
+                <span class="revit-name">Tag Annotation Tool</span>
+                <span class="revit-desc">Automating placement and management of tags in Revit views.</span>
+                <span class="revit-badge badge-wip">In Progress</span>
+            </div>
+        </div>
+
+        <!-- ========= TECH STACK ========= -->
+        <div class="sec-title">
+            <span class="sec-num">05</span>Technology
+        </div>
+
+        <div class="tech-section">
+            <div class="tech-row">
+                <div class="tech-label">Languages</div>
+                <div class="tech-chips">
+                    <span class="tech">Python</span><span class="tech">Node.js</span>
+                    <span class="tech">JavaScript / TypeScript</span><span class="tech">Flask</span><span
+                        class="tech">Express</span>
+                </div>
+            </div>
+            <div class="tech-row">
+                <div class="tech-label">Integrations & Cloud</div>
+                <div class="tech-chips">
+                    <span class="tech">REST APIs</span><span class="tech">AWS RDS (PostgreSQL)</span>
+                    <span class="tech">AWS S3</span><span class="tech">Azure AD</span>
+                    <span class="tech">Autodesk APS</span><span class="tech">Bentley iTwin</span>
+                </div>
+            </div>
+            <div class="tech-row">
+                <div class="tech-label">Tools & BIM</div>
+                <div class="tech-chips">
+                    <span class="tech">Revit API (pyRevit)</span><span class="tech">Power BI Embedded</span>
+                    <span class="tech">Docker</span><span class="tech">Git</span><span class="tech">Postman</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:28px 0 12px;color:var(--dim);font-size:12px">
+            Omar Taha · omar.taha@aidigits.net · Cairo, Egypt
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('beforeprint', function () {
+            document.querySelectorAll('details').forEach(function (d) {
+                d.dataset.wasOpen = d.open; d.open = true;
+            });
+        });
+        window.addEventListener('afterprint', function () {
+            document.querySelectorAll('details').forEach(function (d) {
+                d.open = d.dataset.wasOpen === 'true';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
