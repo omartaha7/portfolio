@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Taha — Portfolio</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --card2: #1c2128;
+            --accent: #2f81f7;
+            --green: #3fb950;
+            --amber: #d29922;
+            --purple: #bc8cff;
+            --txt: #e6edf3;
+            --dim: #7d8590;
+            --border: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.65
+        }
+
+        /* NAV */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 17, 23, .96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--txt);
+            padding: 10px 16px 10px 0;
+            border-right: 1px solid var(--border);
+            margin-right: 8px;
+            flex-shrink: 0
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 10px 13px;
+            color: var(--dim);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: .15s;
+            flex-shrink: 0
+        }
+
+        .nav a:hover {
+            color: var(--txt);
+            border-bottom-color: var(--accent)
+        }
+
+        /* HERO */
+        .hero {
+            padding: 40px 20px 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .hero h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--txt)
+        }
+
+        .hero p {
+            color: var(--dim);
+            margin-top: 6px;
+            font-size: 14px
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            justify-content: center;
+            margin-top: 14px
+        }
+
+        .chip {
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid
+        }
+
+        .chip-blue {
+            background: #0c2d6b;
+            color: #79c0ff;
+            border-color: #1f6feb
+        }
+
+        .chip-green {
+            background: #0a2d1a;
+            color: #56d364;
+            border-color: #238636
+        }
+
+        .chip-amber {
+            background: #2e1b00;
+            color: #e3b341;
+            border-color: #9e6a03
+        }
+
+        .chip-purple {
+            background: #1a0f3d;
+            color: #d2a8ff;
+            border-color: #6e40c9
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 8px;
+            margin: 20px 0
+        }
+
+        .stat {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center
+        }
+
+        .stat .num {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent)
+        }
+
+        .stat .lbl {
+            font-size: 11px;
+            color: var(--dim);
+            margin-top: 2px
+        }
+
+        /* SECTION HEADER */
+        .sec-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--txt);
+            margin: 28px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            scroll-margin-top: 48px
+        }
+
+        .sec-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border)
+        }
+
+        .sec-num {
+            font-size: 11px;
+            background: var(--accent);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700
+        }
+
+        .sec-sub {
+            font-size: 12px;
+            color: var(--dim);
+            font-weight: 400
+        }
+
+        /* PROJECT INTRO */
+        .proj-intro {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--dim);
+            line-height: 1.7
+        }
+
+        .proj-intro strong {
+            color: var(--txt)
+        }
+
+        /* COLLAPSIBLE MODULES */
+        .modules-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 8px;
+            margin-bottom: 12px
+        }
+
+        details {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        details[open] {
+            border-color: var(--accent)
+        }
+
+        summary {
+            padding: 11px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--txt);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none
+        }
+
+        summary::-webkit-details-marker {
+            display: none
+        }
+
+        summary::after {
+            content: '›';
+            color: var(--dim);
+            font-size: 18px;
+            transition: transform .2s;
+            display: inline-block;
+            margin-left: 8px
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+            color: var(--accent)
+        }
+
+        summary:hover {
+            background: var(--card2)
+        }
+
+        .module-label {
+            font-size: 10px;
+            color: var(--amber);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 2px
+        }
+
+        .details-body {
+            padding: 0 14px 13px;
+            font-size: 13px;
+            color: var(--dim);
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 10px
+        }
+
+        /* AUTOMATION TABLE */
+        .auto-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 12px
+        }
+
+        .auto-table th {
+            background: var(--card2);
+            color: var(--dim);
+            padding: 7px 12px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            border-bottom: 2px solid var(--border)
+        }
+
+        .auto-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top
+        }
+
+        .auto-table tr:last-child td {
+            border-bottom: none
+        }
+
+        .auto-table td:first-child {
+            font-weight: 600;
+            color: var(--txt);
+            width: 200px;
+            white-space: nowrap
+        }
+
+        .auto-table-wrap {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px
+        }
+
+        /* REVIT SECTION */
+        .revit-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px
+        }
+
+        .revit-item {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px
+        }
+
+        .revit-item:last-child {
+            border-bottom: none
+        }
+
+        .revit-icon {
+            font-size: 16px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .revit-name {
+            font-weight: 600;
+            color: var(--txt);
+            min-width: 160px
+        }
+
+        .revit-desc {
+            color: var(--dim)
+        }
+
+        .revit-badge {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            flex-shrink: 0
+        }
+
+        .badge-done {
+            background: #0a2d1a;
+            color: #56d364;
+            border: 1px solid #238636
+        }
+
+        .badge-wip {
+            background: #2e1b00;
+            color: #e3b341;
+            border: 1px solid #9e6a03
+        }
+
+        /* TECH STACK */
+        .tech-simple {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px
+        }
+
+        .tech {
+            background: var(--card2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            color: var(--dim);
+            font-family: 'Courier New', monospace
+        }
+
+        .tech-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px
+        }
+
+        .tech-row {
+            margin-bottom: 12px
+        }
+
+        .tech-row:last-child {
+            margin-bottom: 0
+        }
+
+        .tech-label {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 6px
+        }
+
+        @media(max-width:640px) {
+            .modules-wrap {
+                grid-template-columns: 1fr
+            }
+
+            .revit-item {
+                flex-wrap: wrap
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #111;
+                font-size: 11pt;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                background: #fff;
+                padding: 20px 0 14px;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .hero h1 {
+                color: #111;
+                font-size: 18pt;
+            }
+
+            .hero p {
+                color: #555;
+            }
+
+            .chip {
+                border-color: #999;
+                color: #333;
+                background: #f0f0f0;
+            }
+
+            .stat {
+                border-color: #ddd;
+                background: #f8f8f8;
+            }
+
+            .stat .num {
+                color: #1a56db;
+            }
+
+            .stat .lbl {
+                color: #555;
+            }
+
+            .sec-title {
+                color: #111;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 4px;
+            }
+
+            .sec-num {
+                background: #1a56db;
+            }
+
+            .sec-sub {
+                color: #555;
+            }
+
+            .sec-title::after {
+                background: #ddd;
+            }
+
+            .proj-intro {
+                background: #f8f8f8;
+                border-color: #ddd;
+                color: #444;
+            }
+
+            .proj-intro strong {
+                color: #111;
+            }
+
+            details {
+                background: #f8f8f8;
+                border-color: #ddd;
+                page-break-inside: avoid;
+            }
+
+            details[open] {
+                border-color: #1a56db;
+            }
+
+            summary {
+                color: #111;
+                background: #f0f0f0;
+            }
+
+            .details-body {
+                color: #444;
+                border-top-color: #ddd;
+            }
+
+            .module-label {
+                color: #9a6a00;
+            }
+
+            .auto-table-wrap {
+                background: #f8f8f8;
+                border-color: #ddd;
+            }
+
+            .auto-table th {
+                background: #e8e8e8;
+                color: #555;
+                border-bottom-color: #ccc;
+            }
+
+            .auto-table td {
+                border-bottom-color: #e0e0e0;
+                color: #444;
+            }
+
+            .auto-table td:first-child {
+                color: #111;
+            }
+
+            .revit-list {
+                background: #f8f8f8;
+                border-color: #ddd;
+            }
+
+            .revit-item {
+                border-bottom-color: #e0e0e0;
+            }
+
+            .revit-name {
+                color: #111;
+            }
+
+            .revit-desc {
+                color: #444;
+            }
+
+            .badge-done {
+                background: #e8f5e9;
+                color: #2e7d32;
+                border-color: #a5d6a7;
+            }
+
+            .badge-wip {
+                background: #fff8e1;
+                color: #f57f17;
+                border-color: #ffe082;
+            }
+
+            .tech-section {
+                background: #f8f8f8;
+                border-color: #ddd;
+            }
+
+            .tech {
+                background: #f0f0f0;
+                border-color: #ddd;
+                color: #444;
+            }
+
+            .tech-label {
+                color: #1a56db;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <span class="nav-title">Omar Taha</span>
+            <a href="#dt">Digital Twin</a>
+            <a href="#demo">Demolition Viewer</a>
+            <a href="#micro">Microservices</a>
+            <a href="#revit">Revit Tools</a>
+            <a href="#stack">Stack</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Automation & Development Portfolio</h1>
+        <p>Omar Taha · Automation Engineer & Digital Twin Developer · AIDIGITS</p>
+        <div class="chips">
+            <span class="chip chip-blue">Autodesk Forge / APS</span>
+            <span class="chip chip-purple">Bentley iTwin</span>
+            <span class="chip chip-green">Node.js · Python</span>
+            <span class="chip chip-amber">AWS · PostgreSQL</span>
+            <span class="chip chip-blue">React · TypeScript</span>
+            <span class="chip chip-green">Microservices</span>
+            <span class="chip chip-amber">IoT · Power BI</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="stats">
+            <div class="stat">
+                <div class="num">2</div>
+                <div class="lbl">Platforms Built</div>
+            </div>
+            <div class="stat">
+                <div class="num">8</div>
+                <div class="lbl">App Modules</div>
+            </div>
+            <div class="stat">
+                <div class="num">6</div>
+                <div class="lbl">Microservices</div>
+            </div>
+            <div class="stat">
+                <div class="num">6+</div>
+                <div class="lbl">Integrations</div>
+            </div>
+            <div class="stat">
+                <div class="num">3+</div>
+                <div class="lbl">Years</div>
+            </div>
+        </div>
+
+        <!-- ========= 01 DIGITAL TWIN ========= -->
+        <div class="sec-title" id="dt">
+            <span class="sec-num">01</span>Digital Twin Platform
+            <span class="sec-sub">Bentley iTwin · Full-Stack</span>
+        </div>
+
+        <div class="proj-intro">
+            A full-stack enterprise Digital Twin platform built on <strong>Bentley iTwin</strong>, with a <strong>React
+                + TypeScript</strong> frontend, <strong>Flask/Python microservice</strong> backend, and <strong>AWS RDS
+                PostgreSQL</strong> database. Provides live 3D model integration, IoT monitoring, construction progress
+            tracking, and quality certification — all in one connected system.
+        </div>
+
+        <div class="modules-wrap">
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Monitoring</div>
+                        Asset Performance
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Three role-based dashboards (Executive, Operations, Engineering) with KPIs, health scoring, and
+                    trend analysis. The 3D model is color-coded by asset health status. Selecting an asset in the table
+                    highlights it in the 3D model, and vice versa.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Workflow</div>
+                        Facility Service Requests
+                    </div>
+                </summary>
+                <div class="details-body">
+                    End-to-end maintenance request lifecycle: submission, admin assignment, technician execution, and
+                    sign-off. Requests can be raised by clicking directly on the 3D model. Automated email notifications
+                    at every workflow stage.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Real-Time</div>
+                        IoT Monitoring & Control
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Live sensor data (temperature, pressure, alarms) displayed within the 3D environment. Room-based
+                    device management with visual alerts, color-coded severity, and historical trend views.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">4D BIM</div>
+                        Construction Progress Tracking
+                    </div>
+                </summary>
+                <div class="details-body">
+                    IWP progress table with bulk update and undo/redo. 3D model color-coded by completion status.
+                    Includes 4D animated timeline simulation, before/after comparison, and embedded Power BI analytics
+                    linked to the 3D model.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Quality</div>
+                        QC & Certification
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Automated intake from the Progress module — completed IWPs are forwarded for QA/QC review
+                    automatically. Certificate creation, inspection tracking, and 3D colorization distinguishing
+                    certified vs. uncertified elements.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">BIM Data</div>
+                        Hierarchy Visualization
+                    </div>
+                </summary>
+                <div class="details-body">
+                    8-level drill-down navigation: Project → Zone → Area → Unit → Discipline → Category → Element.
+                    Custom color mapping applied to the 3D model in real time — handles 118,000+ elements efficiently.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Analytics</div>
+                        Power BI Dashboards
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Embedded Microsoft Power BI reports authenticated via Azure Active Directory — enterprise-grade
+                    analytics with bidirectional filtering between charts and the 3D model.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Admin</div>
+                        Administration Panel
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Centralized platform management for user roles, multi-tenant configuration, and system settings —
+                    built with a modular sidebar architecture.
+                </div>
+            </details>
+        </div>
+
+        <div class="auto-table-wrap">
+            <table class="auto-table">
+                <tr>
+                    <th colspan="2">Automation & Backend Pipelines</th>
+                </tr>
+                <tr>
+                    <td>IoT Data Simulation</td>
+                    <td>Automated pipeline that generates realistic sensor data, pushes it to the database, and updates
+                        live Power BI dashboards in real time — supports single-run and continuous modes.</td>
+                </tr>
+                <tr>
+                    <td>Room Data Extraction</td>
+                    <td>Reads room coordinates from the 3D model and maps them to the database, enabling accurate IoT
+                        device positioning and spatial data linkage.</td>
+                </tr>
+                <tr>
+                    <td>Progress → QC Handoff</td>
+                    <td>Automated cross-module workflow: completed IWPs are forwarded from Progress Tracking to QC &
+                        Certification for review — no manual handoff required.</td>
+                </tr>
+                <tr>
+                    <td>Automated Notifications</td>
+                    <td>Event-driven email service integrated into the service request workflow — triggers on creation,
+                        assignment, and completion stages.</td>
+                </tr>
+                <tr>
+                    <td>Database Provisioning</td>
+                    <td>Setup pipelines that auto-provision the full database schema, roles, and configurations from
+                        scratch — with version migration support.</td>
+                </tr>
+                <tr>
+                    <td>Data Seeding</td>
+                    <td>Pipelines that populate realistic test data for asset performance and operations — enabling
+                        rapid demo environment setup.</td>
+                </tr>
+                <tr>
+                    <td>Health Monitoring</td>
+                    <td>Backend tooling for database health checks, schema auditing, multi-tenant validation, and data
+                        integrity analysis.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 02 DEMOLITION VIEWER ========= -->
+        <div class="sec-title" id="demo">
+            <span class="sec-num">02</span>Smart Demolition Viewer
+            <span class="sec-sub">Autodesk Forge (APS) · Full-Stack</span>
+        </div>
+
+        <div class="proj-intro">
+            A web-based platform built on <strong>Autodesk Platform Services (APS / Forge)</strong>, enabling
+            intelligent management, visualization, and analysis of demolition projects directly in the browser —
+            integrating 3D BIM viewing with material logistics, circular economy analytics, and permit management.
+        </div>
+
+        <div class="modules-wrap">
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">3D Viewing</div>
+                        Viewer & Demolition Sequence
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Dual 3D viewer for simultaneous building and site map display. Animated step-by-step demolition
+                    sequence linked to an interactive Gantt timeline with phase color-coding.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Analytics</div>
+                        Material Analytics Dashboard
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Live charts (type, condition, recyclability, circular economy score, location) synchronized with the
+                    3D model. Clicking a chart highlights the corresponding elements in the viewer in real time.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Visualization</div>
+                        Filtering & Colorization
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Multi-criteria filtering and real-time color-coding of model elements — by material type,
+                    recyclability, demolition status, and circular economy score.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Logistics</div>
+                        Material Marketplace
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Portal for browsing, posting, and requesting construction and demolition materials. Includes
+                    personal inventory management, order tracking, and route cost estimation between sites.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">BIM Data</div>
+                        3D Material Extractor
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Reads and exports material quantity data directly from the BIM model for procurement or inventory
+                    reporting.
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div>
+                        <div class="module-label">Compliance</div>
+                        Demolition Permit Management
+                    </div>
+                </summary>
+                <div class="details-body">
+                    Digital submission of official demolition permits — capturing applicant details, asbestos
+                    certifications, and contractor data. Permits are stored and automatically exported as formatted PDF
+                    documents.
+                </div>
+            </details>
+        </div>
+
+        <div class="auto-table-wrap">
+            <table class="auto-table">
+                <tr>
+                    <th colspan="2">Automated Workflows</th>
+                </tr>
+                <tr>
+                    <td>Model Processing Pipeline</td>
+                    <td>Uploading a Revit or CAD file triggers automatic cloud translation via the APS Model Derivative
+                        API — making the model viewable in the browser with no manual steps.</td>
+                </tr>
+                <tr>
+                    <td>Automated PDF Export</td>
+                    <td>Permit submissions automatically generate a professionally formatted PDF document for
+                        record-keeping and regulatory compliance.</td>
+                </tr>
+                <tr>
+                    <td>Cross-Module Data Sync</td>
+                    <td>Material, order, and marketplace data persists across sessions and can be exported to CSV for
+                        sharing or reporting.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 03 MICROSERVICES ========= -->
+        <div class="sec-title" id="micro">
+            <span class="sec-num">03</span>BIM Microservices & Automation
+            <span class="sec-sub">Node.js · Python · REST APIs · CONSTRUCT-X (USA)</span>
+        </div>
+
+        <div class="proj-intro">
+            A suite of automation services and data pipelines developed for <strong>CONSTRUCT-X (USA)</strong> —
+            covering BIM data processing, validation, workflow management, and cloud integration.
+        </div>
+
+        <div class="auto-table-wrap">
+            <table class="auto-table">
+                <tr>
+                    <th colspan="2">Capabilities Delivered</th>
+                </tr>
+                <tr>
+                    <td>Excel / CSV Parsing</td>
+                    <td>Automated ingestion and processing of structured data files — extracting, transforming, and
+                        routing data between systems.</td>
+                </tr>
+                <tr>
+                    <td>Data Validation</td>
+                    <td>Rule-based validation services that check incoming data against defined schemas. Non-compliant
+                        records are rejected with specific error feedback before entering the system.</td>
+                </tr>
+                <tr>
+                    <td>Database API Integration</td>
+                    <td>CRUD operations and data synchronization between multiple external sources and cloud databases
+                        via REST APIs.</td>
+                </tr>
+                <tr>
+                    <td>Automated Notifications</td>
+                    <td>Event-driven email service that triggers notifications for workflow state changes.</td>
+                </tr>
+                <tr>
+                    <td>File & Folder Automation</td>
+                    <td>Automated file organization, batch renaming, and folder structure management.</td>
+                </tr>
+                <tr>
+                    <td>Automated Testing</td>
+                    <td>Unit and integration tests written for all deployed services — validating correctness, data
+                        integrity, and API behavior.</td>
+                </tr>
+                <tr>
+                    <td>Flow-Based Integration</td>
+                    <td>Microservice orchestration using flow-based programming — linking services into automated
+                        pipelines for end-to-end BIM data processing workflows.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ========= 04 REVIT TOOLS ========= -->
+        <div class="sec-title" id="revit">
+            <span class="sec-num">04</span>Revit Automation Tools
+            <span class="sec-sub">Python · Revit API · pyRevit</span>
+        </div>
+
+        <div class="revit-list">
+            <div class="revit-item">
+                <span class="revit-icon">📊</span>
+                <span class="revit-name">Sheet Data Export</span>
+                <span class="revit-desc">Reads all sheets and exports them to CSV — Sheet Number, Name, Author, Checker,
+                    Revision.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🏠</span>
+                <span class="revit-name">Room Validation Report</span>
+                <span class="revit-desc">Reports rooms and areas, flags any room with a missing name or number.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🧱</span>
+                <span class="revit-name">Wall Quantity Takeoff</span>
+                <span class="revit-desc">Groups walls by type, sums total area, and exports to CSV.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">✅</span>
+                <span class="revit-name">Model Health Check</span>
+                <span class="revit-desc">Runs 4 automated checks: empty sheets, unplaced rooms, missing names/numbers,
+                    views not on sheets.</span>
+                <span class="revit-badge badge-done">Done</span>
+            </div>
+            <div class="revit-item">
+                <span class="revit-icon">🏷️</span>
+                <span class="revit-name">Tag Annotation Tool</span>
+                <span class="revit-desc">Automating placement and management of tags in Revit views.</span>
+                <span class="revit-badge badge-wip">In Progress</span>
+            </div>
+        </div>
+
+        <!-- ========= TECH STACK ========= -->
+        <div class="sec-title" id="stack">
+            <span class="sec-num">05</span>Technology Stack
+        </div>
+
+        <div class="tech-section">
+            <div class="tech-row">
+                <div class="tech-label">Languages & Frameworks</div>
+                <div class="tech-simple">
+                    <span class="tech">Python</span><span class="tech">Node.js</span>
+                    <span class="tech">JavaScript / TypeScript</span><span class="tech">React</span>
+                    <span class="tech">Flask</span><span class="tech">Express</span>
+                </div>
+            </div>
+            <div class="tech-row">
+                <div class="tech-label">Platforms & BIM</div>
+                <div class="tech-simple">
+                    <span class="tech">Autodesk Forge / APS</span><span class="tech">Bentley iTwin</span>
+                    <span class="tech">Revit API (pyRevit)</span>
+                </div>
+            </div>
+            <div class="tech-row">
+                <div class="tech-label">Cloud & Data</div>
+                <div class="tech-simple">
+                    <span class="tech">AWS RDS (PostgreSQL)</span><span class="tech">AWS S3</span>
+                    <span class="tech">Azure AD</span><span class="tech">Power BI Embedded</span>
+                </div>
+            </div>
+            <div class="tech-row">
+                <div class="tech-label">Tools</div>
+                <div class="tech-simple">
+                    <span class="tech">Docker</span><span class="tech">Git</span>
+                    <span class="tech">GitHub Actions</span><span class="tech">Postman</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:28px 0 12px;color:var(--dim);font-size:12px">
+            Omar Taha · omar.taha@aidigits.net · Cairo, Egypt
+        </div>
+
+    </div>
+
+
+    <script>
+        // Auto-expand all collapsible sections when printing (Ctrl+P / Save as PDF)
+        window.addEventListener('beforeprint', function () {
+            document.querySelectorAll('details').forEach(function (d) {
+                d.dataset.wasOpen = d.open;
+                d.open = true;
+            });
+        });
+        window.addEventListener('afterprint', function () {
+            document.querySelectorAll('details').forEach(function (d) {
+                d.open = d.dataset.wasOpen === 'true';
+            });
+        });
+    </script>
+</body>
+
+</html>
